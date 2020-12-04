@@ -55,7 +55,6 @@ class OAuth2Login extends Component {
 
   onSuccess = (data) => {
     if (!data.code) {
-      alert(data)
       return this.onFailure(new Error(`'code' not found: ${JSON.stringify(data)}`));
     }
 
