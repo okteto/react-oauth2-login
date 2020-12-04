@@ -36,9 +36,11 @@ class OAuth2Login extends Component {
       redirect_uri: redirectUri,
       response_type: responseType,
     });
+    
+    const url = `${authorizeUri}?${search}`;
     const popup = this.popup = PopupWindow.open(
       'github-oauth2-authorize',
-      `${authorizeUri}?${search}`,
+      url,
       { height: 1000, width: 600 }
     );
 
@@ -54,6 +56,10 @@ class OAuth2Login extends Component {
   }
 
   onSuccess = (data) => {
+    if (data.error) {
+      return this.onFailure(new Error(`'${data.error}': ${decodeURI(data.error_description)}`));
+    }
+
     if (!data.code) {
       return this.onFailure(new Error(`'code' not found: ${JSON.stringify(data)}`));
     }
