@@ -2,7 +2,7 @@
   "name": "react-oauth2-login",
   "version": "0.0.1",
   "description": "A React Component for OAuth2 Login",
-  "main": "dist/OAuthLogin.js",
+  "main": "dist/OAuth2Login.js",
   "scripts": {
     "build": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
