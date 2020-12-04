@@ -5,7 +5,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "airbnb"
+    "airbnb-base"
   ],
   "parser": "babel-eslint",
   "plugins": [
