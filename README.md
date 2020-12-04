@@ -1,6 +1,5 @@
 # React OAuth2 Login
 
-![NPM](https://img.shields.io/npm/v/react-oauth2-login.svg?style=flat)
 React component for [OAuth2 login](https://developer.okta.com/blog/2019/08/22/okta-authjs-pkce/?utm_campaign=text_website_all_multiple_dev_dev_oauth-pkce_null&utm_source=oauthio&utm_medium=cpc).
 
 ## Usage
