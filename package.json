@@ -7,7 +7,8 @@
     "build": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
