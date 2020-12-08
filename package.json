@@ -1,5 +1,5 @@
 {
-  "name": "react-oauth2-login",
+  "name": "@okteto/react-oauth2-login",
   "version": "0.0.2",
   "description": "A React Component for OAuth2 Login",
   "main": "dist/OAuth2Login.js",
