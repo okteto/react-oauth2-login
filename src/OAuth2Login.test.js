@@ -52,6 +52,7 @@ test('Opens OAuth dialog', () => {
     <OAuth2Login
       clientId={clientId}
       redirectUri={redirectUri}
+      state="hello"
       authorizeUri="http://bar.test"
     />
   );
@@ -59,7 +60,7 @@ test('Opens OAuth dialog', () => {
 
   wrapper.find('button').simulate('click');
 
-  const query = `client_id=${clientId}&scope=email&redirect_uri=${redirectUri}&response_type=code`
+  const query = `client_id=${clientId}&scope=email&redirect_uri=${redirectUri}&response_type=code&state=hello`
 
   expect(wrapper.instance().popup.url).toBe(
     `http://bar.test?${query}`
