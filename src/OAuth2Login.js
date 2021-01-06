@@ -17,6 +17,7 @@ class OAuth2Login extends Component {
     popupWidth: PropTypes.number,
     redirectUri: PropTypes.string,
     scope: PropTypes.string,
+    state: PropTypes.string,
     disabled: PropTypes.bool
   }
 
@@ -24,6 +25,7 @@ class OAuth2Login extends Component {
     buttonText: 'Sign in',
     redirectUri: '',
     authorizeUri: '',
+    state: '',
     scope: 'email',
     responseType: 'code',
     popupHeight: 650,
@@ -35,7 +37,7 @@ class OAuth2Login extends Component {
 
   onBtnClick = () => {
     const {
-      authorizeUri, clientId, scope, redirectUri, responseType,
+      authorizeUri, clientId, scope, redirectUri, responseType, state,
       popupHeight, popupWidth
     } = this.props;
     const search = toQuery({
@@ -43,6 +45,7 @@ class OAuth2Login extends Component {
       scope,
       redirect_uri: redirectUri,
       response_type: responseType,
+      state,
     });
 
     let top = window.screen.height - popupHeight;
