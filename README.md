@@ -89,6 +89,12 @@ Callback for successful login. An object will be passed as an argument to the ca
 
 Callback for errors raised during login.
 
+#### `state`
+
+`{string}`
+
+Pass `state` value as a parameter of the redirect URI.
+
 
 ## Development
 
