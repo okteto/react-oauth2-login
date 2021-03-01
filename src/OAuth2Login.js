@@ -48,11 +48,10 @@ class OAuth2Login extends Component {
       state,
     });
 
-    let top = window.screen.height - popupHeight;
-    top = top > 0 ? top / 2 : 0;
-
-    let left = window.screen.width - popupWidth;
-    left = left > 0 ? left / 2 : 0;
+    // To fix issues with window.screen in multi-monitor setups, the easier option is to
+    // center the pop-up over the parent window.
+    const top = window.top.outerHeight / 2 + window.top.screenY - (popupHeight / 2);
+    const left = window.top.outerWidth / 2 + window.top.screenX - (popupWidth / 2);
 
     const url = `${authorizeUri}?${search}`;
     const popup = this.popup = PopupWindow.open(
