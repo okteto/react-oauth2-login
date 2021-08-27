@@ -25,10 +25,12 @@ const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
 
 ReactDOM.render(
-  <OAuth2Login clientId="xxXXxxXXxxxxxXXXXx"
+  <OAuth2Login
+    clientId="xxXXxxXXxxxxxXXXXx"
     authorizeUri="https://example.com/oauth2/authorize"
     onSuccess={onSuccess}
-    onFailure={onFailure}/>,
+    onFailure={onFailure}
+  />,
   document.getElementById('example')
 );
 ```

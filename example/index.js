@@ -6,10 +6,14 @@ const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
 
 ReactDOM.render(
-  <OAuth2 clientId=""
-    authorizeUri=""
+  <OAuth2
+    authorizeUri="https://discord.com/oauth2/authorize"
+    responseType="code"
+    clientId="XXXXX"
     redirectUri=""
+    scope="identify guilds"
     onSuccess={onSuccess}
-    onFailure={onFailure}/>,
+    onFailure={onFailure}
+  />,
   document.getElementById('example')
 );

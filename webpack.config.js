@@ -4,7 +4,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  mode: 'development',
+  devtool: 'source-map',
   entry: {
     example: ['webpack/hot/dev-server', './example/index.js'],
   },
