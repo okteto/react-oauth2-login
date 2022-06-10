@@ -19,13 +19,13 @@ npm install @okteto/react-oauth2-login
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import OAuth2Login from 'react-oauth2-login';
+import LoginOAuth2 from 'react-oauth2-login';
 
 const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
 
 ReactDOM.render(
-  <OAuth2Login
+  <LoginOAuth2
     clientId="xxXXxxXXxxxxxXXXXx"
     authorizeUri="https://example.com/oauth2/authorize"
     onSuccess={onSuccess}

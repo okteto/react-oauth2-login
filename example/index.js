@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import OAuth2 from '../src/OAuth2Login';
+import LoginOAuth2 from '../src/LoginOAuth2';
 
 const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
 
 ReactDOM.render(
-  <OAuth2
+  <LoginOAuth2
     authorizeUri="https://discord.com/oauth2/authorize"
     responseType="code"
     clientId="XXXXX"

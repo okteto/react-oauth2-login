@@ -2,11 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import OAuth2Login from './OAuth2Login.js';
+import LoginOAuth2 from './LoginOAuth2.js';
 
 test('Renders defaults', () => {
   const component = renderer.create(
-    <OAuth2Login
+    <LoginOAuth2
       clientId="foo"
       redirectUri="http://foo.test/auth/github"
       authorizeUri="http://bar.test"
@@ -19,7 +19,7 @@ test('Renders defaults', () => {
 
 test('Renders with `className`', () => {
   const component = renderer.create(
-    <OAuth2Login
+    <LoginOAuth2
       clientId="foo"
       redirectUri="http://foo.test/auth/github"
       authorizeUri="http://bar.test"
@@ -33,7 +33,7 @@ test('Renders with `className`', () => {
 
 test('Renders with `buttonText`', () => {
   const component = renderer.create(
-    <OAuth2Login clientId="foo"
+    <LoginOAuth2 clientId="foo"
       authorizeUri="http://bar.test"
       redirectUri="http://foo.test/auth/github"
       buttonText="Foo"
@@ -49,7 +49,7 @@ test('Opens OAuth dialog', () => {
   const redirectUri = 'http://foo.test/auth/github';
 
   const component = (
-    <OAuth2Login
+    <LoginOAuth2
       clientId={clientId}
       redirectUri={redirectUri}
       state="hello"

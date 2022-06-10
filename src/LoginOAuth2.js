@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import PopupWindow from './PopupWindow';
+import LoginOAuth2Window from './LoginOAuth2Window';
 import { toQuery } from './utils';
 
-class OAuth2Login extends Component {
+class LoginOAuth2 extends Component {
   static propTypes = {
     buttonText: PropTypes.string,
     children: PropTypes.node,
@@ -57,7 +57,7 @@ class OAuth2Login extends Component {
     const left = window.top.outerWidth / 2 + window.top.screenX - (popupWidth / 2);
 
     const url = `${authorizeUri}?${search}`;
-    const popup = this.popup = PopupWindow.open(
+    const popup = this.popup = LoginOAuth2Window.open(
       'github-oauth2-authorize',
       url,
       {
@@ -106,4 +106,4 @@ class OAuth2Login extends Component {
   }
 }
 
-export default OAuth2Login;
+export default LoginOAuth2;

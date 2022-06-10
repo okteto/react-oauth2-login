@@ -1,6 +1,6 @@
 import { toParams, toQuery } from './utils';
 
-class PopupWindow {
+class LoginOAuth2Window {
   constructor(id, url, options = {}) {
     this.id = id;
     this.url = url;
@@ -76,4 +76,4 @@ class PopupWindow {
   }
 }
 
-export default PopupWindow;
+export default LoginOAuth2Window;

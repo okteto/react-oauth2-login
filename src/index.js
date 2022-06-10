@@ -1,3 +1,3 @@
-import OAuth2Login from './OAuth2Login';
+import LoginOAuth2 from './LoginOAuth2';
 
-export default OAuth2Login;
+export default LoginOAuth2;

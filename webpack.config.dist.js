@@ -9,9 +9,9 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'OAuth2Login.js',
+    filename: 'index.js',
     libraryTarget: 'umd',
-    library: 'OAuth2Login'
+    library: 'LoginOAuth2'
   },
   module: {
     rules: [{

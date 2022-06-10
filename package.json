@@ -1,8 +1,9 @@
 {
   "name": "@okteto/react-oauth2-login",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "A React Component for OAuth2 Login",
-  "main": "dist/OAuth2Login.js",
+  "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
@@ -18,6 +19,7 @@
     "reactjs",
     "react-component",
     "oauth2-login",
+    "login-oauth2",
     "react-oauth2-login",
     "oauth2"
   ],
