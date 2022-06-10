@@ -59,7 +59,11 @@ Registered redirect URI for GitHub OAuth application.
 
 `{string}`
 
-Scope for OAuth2 application. Defaults to `oidc:email`.
+#### `responseType`
+
+`{string}`
+
+Indicate response type returned as a pair in the fragment identifier of the URI (#) to which the user is redirected after completing the authorization process.
 
 #### `className`
 

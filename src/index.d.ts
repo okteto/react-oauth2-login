@@ -9,6 +9,7 @@ interface LoginOAuth2Props {
   onSuccess(response: { code: string }): void;
   onFailure(response: { message: string }): void;
   params?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 
 declare const LoginOAuth2: React.FC<LoginOAuth2Props>;

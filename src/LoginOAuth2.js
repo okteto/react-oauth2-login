@@ -18,6 +18,7 @@ class LoginOAuth2 extends Component {
     redirectUri: PropTypes.string,
     scope: PropTypes.string,
     state: PropTypes.string,
+    responseType: PropTypes.string,
     disabled: PropTypes.bool,
     params: PropTypes.object
   }
@@ -80,12 +81,13 @@ class LoginOAuth2 extends Component {
   }
 
   onSuccess = (data) => {
+    const { responseType } = this.props;
     if (data.error) {
       return this.onFailure(new Error(`'${data.error}': ${decodeURI(data.error_description)}`));
     }
 
-    if (!data.code) {
-      return this.onFailure(new Error(`'code' not found: ${JSON.stringify(data)}`));
+    if (!data[responseType]) {
+      return this.onFailure(new Error(`'${responseType}' not found: ${JSON.stringify(data)}`));
     }
 
     this.props.onSuccess(data);
