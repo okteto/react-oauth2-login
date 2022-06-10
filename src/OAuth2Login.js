@@ -18,7 +18,8 @@ class OAuth2Login extends Component {
     redirectUri: PropTypes.string,
     scope: PropTypes.string,
     state: PropTypes.string,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    params: PropTypes.object
   }
 
   static defaultProps = {
@@ -33,12 +34,13 @@ class OAuth2Login extends Component {
     onRequest: () => {},
     onSuccess: () => {},
     onFailure: () => {},
+    params: {}
   }
 
   onBtnClick = () => {
     const {
       authorizeUri, clientId, scope, redirectUri, responseType, state,
-      popupHeight, popupWidth
+      popupHeight, popupWidth, params
     } = this.props;
     const search = toQuery({
       client_id: clientId,
@@ -46,6 +48,7 @@ class OAuth2Login extends Component {
       redirect_uri: redirectUri,
       response_type: responseType,
       state,
+      ...params
     });
 
     // To fix issues with window.screen in multi-monitor setups, the easier option is to

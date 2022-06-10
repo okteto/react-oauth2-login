@@ -97,6 +97,12 @@ Callback for errors raised during login.
 
 Pass `state` value as a parameter of the redirect URI.
 
+#### `params`
+
+`{string}`
+
+Extra `params` to pass to the authorize URI.
+
 
 ## Development
 

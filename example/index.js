@@ -14,6 +14,10 @@ ReactDOM.render(
     scope="identify guilds"
     onSuccess={onSuccess}
     onFailure={onFailure}
+    params={{
+      prompt: 'consent',
+      access_type: 'offline'
+    }}
   />,
   document.getElementById('example')
 );
