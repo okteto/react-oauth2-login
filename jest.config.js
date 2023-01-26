@@ -5,7 +5,6 @@ module.exports = {
     '\\.(css|scss)$': 'identity-obj-proxy'
   },
   modulePaths: ['<rootDir>/src/'],
-  setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
     url: 'https://test.okteto.net',
