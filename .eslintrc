@@ -1,14 +1,17 @@
 {
   "env": {
     "browser": true,
+    "jest/globals": true,
     "node": true
   },
   "extends": [
     "eslint:recommended",
-    "airbnb-base"
+    "airbnb-base",
+    "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
   "plugins": [
+    "jest",
     "react"
   ]
 }
