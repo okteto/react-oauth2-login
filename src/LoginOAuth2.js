@@ -20,7 +20,7 @@ class LoginOAuth2 extends Component {
     state: PropTypes.string,
     responseType: PropTypes.string,
     disabled: PropTypes.bool,
-    params: PropTypes.object
+    params: PropTypes.object,
   }
 
   static defaultProps = {
@@ -35,13 +35,13 @@ class LoginOAuth2 extends Component {
     onRequest: () => {},
     onSuccess: () => {},
     onFailure: () => {},
-    params: {}
+    params: {},
   }
 
   onBtnClick = () => {
     const {
       authorizeUri, clientId, scope, redirectUri, responseType, state,
-      popupHeight, popupWidth, params
+      popupHeight, popupWidth, params,
     } = this.props;
     const search = toQuery({
       client_id: clientId,
@@ -49,7 +49,7 @@ class LoginOAuth2 extends Component {
       redirect_uri: redirectUri,
       response_type: responseType,
       state,
-      ...params
+      ...params,
     });
 
     // To fix issues with window.screen in multi-monitor setups, the easier option is to
@@ -64,15 +64,15 @@ class LoginOAuth2 extends Component {
       {
         height: popupHeight,
         width: popupWidth,
-        top: top,
-        left: left
-      }
+        top,
+        left,
+      },
     );
 
     this.onRequest();
     popup.then(
-      data => this.onSuccess(data),
-      error => this.onFailure(error)
+      (data) => this.onSuccess(data),
+      (error) => this.onFailure(error),
     );
   }
 
@@ -98,11 +98,13 @@ class LoginOAuth2 extends Component {
   }
 
   render() {
-    const { className, buttonText, children, disabled } = this.props;
+    const {
+      className, buttonText, children, disabled,
+    } = this.props;
     const attrs = {
       onClick: this.onBtnClick,
       className: className || '',
-      disabled: disabled || false
+      disabled: disabled || false,
     };
     return <button {...attrs}>{ children || buttonText }</button>;
   }
