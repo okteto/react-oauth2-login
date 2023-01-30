@@ -1,68 +1,92 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
 
-import LoginOAuth2 from './LoginOAuth2.js';
+import { fireEvent, render } from '@testing-library/react';
+import { findInstance } from 'react-dom-instance';
 
-test('Renders defaults', () => {
-  const component = renderer.create(
-    <LoginOAuth2
-      clientId="foo"
-      redirectUri="http://foo.test/auth/github"
-      authorizeUri="http://bar.test"
-    />
-  );
-  let tree = component.toJSON();
+import LoginOAuth2 from './LoginOAuth2';
 
-  expect(tree).toMatchSnapshot();
-});
+describe('LoginOauth2', () => {
+  it('should render defaults', () => {
+    const { container, getByRole } = render(
+      <LoginOAuth2
+        clientId="foo"
+        redirectUri="http://foo.test/auth/github"
+        authorizeUri="http://bar.test"
+      />,
+    );
 
-test('Renders with `className`', () => {
-  const component = renderer.create(
-    <LoginOAuth2
-      clientId="foo"
-      redirectUri="http://foo.test/auth/github"
-      authorizeUri="http://bar.test"
-      className="foobar"
-    />
-  );
-  let tree = component.toJSON();
+    expect(container.firstChild).toMatchSnapshot();
 
-  expect(tree).toMatchSnapshot();
-});
+    const button = getByRole('button', {
+      name: 'Sign in',
+      hidden: false,
+    });
 
-test('Renders with `buttonText`', () => {
-  const component = renderer.create(
-    <LoginOAuth2 clientId="foo"
-      authorizeUri="http://bar.test"
-      redirectUri="http://foo.test/auth/github"
-      buttonText="Foo"
-    />
-  );
-  let tree = component.toJSON();
+    expect(button).toBeEnabled();
+    expect(button.getAttribute('class')).toBe('');
+  });
 
-  expect(tree).toMatchSnapshot();
-});
+  it('should render with `className`', () => {
+    const { getByRole } = render(
+      <LoginOAuth2
+        clientId="foo"
+        redirectUri="http://foo.test/auth/github"
+        authorizeUri="http://bar.test"
+        className="foobar"
+      />,
+    );
 
-test('Opens OAuth dialog', () => {
-  const clientId = 'foo';
-  const redirectUri = 'http://foo.test/auth/github';
+    const button = getByRole('button', {
+      name: 'Sign in',
+      hidden: false,
+    });
 
-  const component = (
-    <LoginOAuth2
-      clientId={clientId}
-      redirectUri={redirectUri}
-      state="hello"
-      authorizeUri="http://bar.test"
-    />
-  );
-  const wrapper = shallow(component);
+    expect(button.getAttribute('class')).toBe('foobar');
+  });
 
-  wrapper.find('button').simulate('click');
+  it('should render with `buttonText`', () => {
+    const buttonText = 'Foo';
 
-  const query = `client_id=${clientId}&scope=email&redirect_uri=${redirectUri}&response_type=code&state=hello`
+    const { getByRole } = render(
+      <LoginOAuth2 clientId="foo"
+        authorizeUri="http://bar.test"
+        redirectUri="http://foo.test/auth/github"
+        buttonText={buttonText}
+      />,
+    );
 
-  expect(wrapper.instance().popup.url).toBe(
-    `http://bar.test?${query}`
-  );
+    const button = getByRole('button', {
+      name: buttonText,
+      hidden: false,
+    });
+
+    expect(button).toBeEnabled();
+    expect(button.getAttribute('class')).toBe('');
+  });
+
+  it('should open OAuth dialog', async () => {
+    const clientId = 'foo';
+    const redirectUri = 'http://foo.test/auth/github';
+    const authorizeUri = 'http://bar.test';
+    const query = `client_id=${clientId}&scope=email&redirect_uri=${redirectUri}&response_type=code&state=hello`;
+
+    const { container, getByRole } = render(
+      <LoginOAuth2
+        clientId={clientId}
+        redirectUri={redirectUri}
+        state="hello"
+        authorizeUri={authorizeUri}
+      />,
+    );
+
+    const button = getByRole('button', {
+      name: 'Sign in',
+    });
+
+    fireEvent.click(button);
+
+    expect(findInstance(container).popup.url).toBe(
+      `${authorizeUri}?${query}`,
+    );
+  });
 });

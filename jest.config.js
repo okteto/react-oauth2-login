@@ -2,7 +2,7 @@ module.exports = {
   moduleFileExtensions: ['js'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
   modulePaths: ['<rootDir>/src/'],
   setupFilesAfterEnv: ['./jest.setup.js'],
@@ -12,8 +12,8 @@ module.exports = {
     pretendToBeVisual: true,
     beforeParse(window) {
       window.document.childNodes.length === 0;
-      window.alert = msg => console.log(msg);
+      window.alert = (msg) => console.log(msg);
       window.open = () => {};
-    }
-  }
+    },
+  },
 };
