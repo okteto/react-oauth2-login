@@ -22,7 +22,7 @@ describe('LoginOauth2', () => {
       hidden: false,
     });
   
-    expect(button).toBeEnabled;
+    expect(button).toBeEnabled();
     expect(button.getAttribute('class')).toBe('');
   });
   
