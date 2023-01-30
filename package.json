@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "src/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=production webpack -p --config webpack.config.dist.js",
-    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack -p --config webpack.config.dist.js",
+    "start": "NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --config webpack.config.js",
     "lint": "eslint src",
     "test": "jest"
   },
