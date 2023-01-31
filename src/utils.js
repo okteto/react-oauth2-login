@@ -1,5 +1,5 @@
 export function toParams(query) {
-  const q = query.replace(/^\??\//, '');
+  const q = query.replace(/^\?/, '');
 
   return q.split('&').reduce((values, param) => {
     const [key, value] = param.split('=');
@@ -12,6 +12,7 @@ export function toParams(query) {
 
 export function toQuery(params, delimiter = '&') {
   const keys = Object.keys(params);
+
   return keys.reduce((str, key, index) => {
     if (typeof params[key] === 'undefined' || params[key] === null) return;
     let query = `${str}${key}=${params[key]}`;
