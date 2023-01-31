@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
-import { findInstance } from 'react-dom-instance';
 
 import LoginOAuth2 from './LoginOAuth2';
 
@@ -65,12 +64,14 @@ describe('LoginOauth2', () => {
   });
 
   it('should open OAuth dialog', async () => {
+    window.open = jest.fn();
+
     const clientId = 'foo';
     const redirectUri = 'http://foo.test/auth/github';
     const authorizeUri = 'http://bar.test';
     const query = `client_id=${clientId}&scope=email&redirect_uri=${redirectUri}&response_type=code&state=hello`;
 
-    const { container, getByRole } = render(
+    const { getByRole } = render(
       <LoginOAuth2
         clientId={clientId}
         redirectUri={redirectUri}
@@ -85,8 +86,7 @@ describe('LoginOauth2', () => {
 
     fireEvent.click(button);
 
-    expect(findInstance(container).popup.url).toBe(
-      `${authorizeUri}?${query}`,
-    );
+    expect(window.open).toHaveBeenCalled();
+    expect(window.open).toHaveBeenCalledWith(`${authorizeUri}?${query}`, expect.any(String), expect.any(String));
   });
 });
