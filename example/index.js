@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginOAuth2 from '../src/LoginOAuth2';
 
-const onSuccess = response => console.log(response);
-const onFailure = response => console.error(response);
+const onSuccess = (response) => console.log(response);
+const onFailure = (response) => console.error(response);
 
 ReactDOM.render(
   <LoginOAuth2
@@ -16,8 +16,8 @@ ReactDOM.render(
     onFailure={onFailure}
     params={{
       prompt: 'consent',
-      access_type: 'offline'
+      access_type: 'offline',
     }}
   />,
-  document.getElementById('example')
+  document.getElementById('example'),
 );
