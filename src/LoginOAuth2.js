@@ -6,6 +6,7 @@ import { toQuery } from './utils';
 
 class LoginOAuth2 extends Component {
   static propTypes = {
+    authorizeUri: PropTypes.string,
     buttonText: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
