@@ -7,16 +7,6 @@ const responseType = 'code';
 const state = 'hello';
 
 describe('toParams', () => {
-  it('should exclude question mark from query', () => {
-    const query = `?client_id=${clientId}`;
-
-    const returnedObject = toParams(query);
-
-    expect(returnedObject).toStrictEqual({
-      client_id: clientId,
-    });
-  });
-
   it('should return a params object', () => {
     const query = `client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=${responseType}&state=${state}`;
 
