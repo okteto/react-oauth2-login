@@ -36,7 +36,7 @@ class LoginOAuth2Window {
             return;
           }
 
-          const params = toParams(popup.location.search);
+          const params = toParams(popup.location.search.replace(/^\?/, ''));
 
           resolve(params);
 
