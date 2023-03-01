@@ -24,6 +24,11 @@ describe('toParams', () => {
 
     expect(returnedObject).toStrictEqual({ foo: 'string with spaces', bar: 'á!' });
   });
+
+  it('should remove "/" at the beginning of the first key', () => {
+    expect(toParams(`?/foo=bar`)).toStrictEqual({ foo: 'bar' });
+    expect(toParams(`/foo=bar`)).toStrictEqual({ foo: 'bar' });
+  });
 });
 
 describe('toQuery', () => {
