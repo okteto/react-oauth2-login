@@ -16,6 +16,14 @@ describe('toParams', () => {
       client_id: clientId, redirect_uri: redirectUri, scope, response_type: responseType, state,
     });
   });
+
+  it('should return decoded strings', () => {
+    const query = `?foo=string+with%20spaces&bar=%C3%A1!`;
+
+    const returnedObject = toParams(query);
+
+    expect(returnedObject).toStrictEqual({ foo: 'string with spaces', bar: 'á!' });
+  });
 });
 
 describe('toQuery', () => {
