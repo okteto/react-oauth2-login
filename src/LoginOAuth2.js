@@ -84,7 +84,7 @@ class LoginOAuth2 extends Component {
   onSuccess = (data) => {
     const { responseType } = this.props;
     if (data.error) {
-      return this.onFailure(new Error(`'${data.error}': ${decodeURI(data.error_description)}`));
+      return this.onFailure(new Error(`'${data.error}': ${data.error_description}`));
     }
 
     if (!data[responseType]) {
