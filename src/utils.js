@@ -1,13 +1,8 @@
 export function toParams(query) {
-  const q = query.replace(/^\??\//, '');
-
-  return q.split('&').reduce((values, param) => {
-    const [key, value] = param.split('=');
-
-    values[key] = value;
-
-    return values;
-  }, {});
+  // TODO: parsedQuery is a workaround to preserve the old behavior of toParams
+  // but we should analyze if we can/should remove it
+  const parsedQuery = query.replace(/^\??\//, '');
+  return Object.fromEntries(new URLSearchParams(parsedQuery));
 }
 
 export function toQuery(params, delimiter = '&') {
